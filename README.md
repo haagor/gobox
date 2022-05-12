@@ -1,0 +1,2 @@
+# gobox
+sandbox for golang
