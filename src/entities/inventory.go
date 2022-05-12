@@ -1,19 +1,19 @@
-package main
+package entities
 
 import (
     "github.com/satori/go.uuid"
 )
 
-type inventory struct {
-    id uuid.UUID
-    money int
-    fournituresQuantityKg int
+type Inventory struct {
+    Id uuid.UUID
+    Money int
+    FournituresQuantityKg int
 }
 
-func newInventory() *inventory {
+func NewInventory() *Inventory {
     id := uuid.NewV4()
-    i := inventory{id: id}
-    i.money = 0
-    i.fournituresQuantityKg = 0
+    i := Inventory{Id: id}
+    i.Money = 0
+    i.FournituresQuantityKg = 0
     return &i
 }

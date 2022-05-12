@@ -1,24 +1,22 @@
-package main
+package entities
 
 import (
-    "fmt"
     "github.com/satori/go.uuid"
 )
 
-type persona struct {
-    id uuid.UUID
-    inventory inventory
+type Persona struct {
+    Id uuid.UUID
+    Inventory Inventory
 }
 
-func newPersona() *persona {
+func NewPersona() *Persona {
     id := uuid.NewV4()
-    p := persona{id: id}
-    p.inventory = *newInventory()
+    p := Persona{Id: id}
+    p.Inventory = *NewInventory()
     return &p
 }
 
-func main() {
-
-    p := newPersona()
-    fmt.Println(p.id)
+func (p *Persona) GiveMoney(receiver *Persona, money int) {
+    p.Inventory.Money -= money
+    receiver.Inventory.Money += money
 }
