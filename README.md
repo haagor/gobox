@@ -16,8 +16,8 @@ Si j'arrive à faire régulièrement du sport, je dois réussir à investir rég
 
 ## Liens
 
-[Dave.Cheney](https://dave.cheney.net/)
-[Katas](https://codingdojo.org/kata/)
+- [Dave.Cheney](https://dave.cheney.net/)
+- [Katas](https://codingdojo.org/kata/)
 
 ## Détails
 
