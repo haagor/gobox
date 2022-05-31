@@ -14,8 +14,12 @@ Ma volonté: je veux affiner mes connaissances techniques, les approfondir. Ce n
 Mes actions: installer une habitude de lecture, d'expérimentation de code et d'outil. Trouver des coding dojo. Les ressources ne manquent pas! Aujourd'hui j'ai du temps, c'est le moment. Le bon moment aurait été avant de passer à côté d'entretiens. Un petit auto shame et au travail!  
 Si j'arrive à faire régulièrement du sport, je dois réussir à investir régulièrement du temps sur ma technique, indépendamment de mes expériences professionnelles.
 
+## Lectures
+
+[Dave.Cheney](https://dave.cheney.net/)
 
 ## Détails
+
 
 ## TODO
 
@@ -24,7 +28,6 @@ Si j'arrive à faire régulièrement du sport, je dois réussir à investir rég
 - Token / certificat
 - http / https
 - array / slice
-- make array with capacity
 - context
 - exp PSQL
 - lib go PSQL
