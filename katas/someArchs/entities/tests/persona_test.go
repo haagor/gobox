@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/haagor/gobox/src/entities"
+	"github.com/haagor/gobox/katas/someArchs/entities"
 	"github.com/stretchr/testify/assert"
 )
 

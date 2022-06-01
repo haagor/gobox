@@ -11,7 +11,7 @@ A la suite de cet entretien, je dois réagir. Et je veux garder une trace de cet
 
 Ma volonté: je veux affiner mes connaissances techniques, les approfondir. Ce n'est pas normal de passer 2 ans à travailler en tant que dev back Go sur du micro service et des API chez Leboncoin et arriver plus d'un ans après en entretien et ne pas savoir expliquer ce qu'est un "context" dans Go.  
 
-Mes actions: installer une habitude de lecture, d'expérimentation de code et d'outil. Trouver des coding dojo. Les ressources ne manquent pas! Aujourd'hui j'ai du temps, c'est le moment. Le bon moment aurait été avant de passer à côté d'entretiens. Un petit auto shame et au travail!  
+Mes actions: installer une habitude de lecture, d'expérimentation de code et d'outil. Faire des katas. Les ressources ne manquent pas! Aujourd'hui j'ai du temps, c'est le moment. Le bon moment aurait été avant de passer à côté d'entretiens. Un petit auto shame et au travail!  
 Si j'arrive à faire régulièrement du sport, je dois réussir à investir régulièrement du temps sur ma technique, indépendamment de mes expériences professionnelles.
 
 ## Liens
@@ -19,20 +19,29 @@ Si j'arrive à faire régulièrement du sport, je dois réussir à investir rég
 - [Dave.Cheney](https://dave.cheney.net/)
 - [Katas](https://codingdojo.org/kata/)
 
-## Détails
+## Katas
+
+Je vais faire un premier Kata sans objectif particulier. J'ai seulement lu l'introduction de [Practical-Go](https://dave.cheney.net/practical-go/presentations/qcon-china.html
+) et il y a beaucoup de guide line dans ce texte. Je vais essayer à chacun de mes Katas d'ajouter des guide lines. Ainsi Mon premier sera libre, puis il y aura de plus en plus de point. Je devrais pouvoir observer une evolution interressante de mon code.
+
+### Bank OCR
 
 
 ## TODO
 
 - hashmap
-- JWT
-- Token / certificat
-- http / https
+  - checksum
+  - MD5
 - array / slice
-- context
-- exp PSQL
-- lib go PSQL
-- journalisation BD
+- API
+  - JWT
+  - Token / certificat
+  - http / https
+  - context
+- DataBase
+  - exp PSQL
+  - lib go PSQL
+  - journalisation BD
 
 
 ---
