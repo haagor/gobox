@@ -30,9 +30,11 @@ Pour ce premier Kata je n'ai pas grand chose à ajouter. Je pense que le point c
  
 Dans ce premier kata je n'ai pas pris en compte de guide line. En revanche c'est l'occasion de creuser certaines définitions et concepts que je ne maîtrise pas.
 Le `checksum` est une string de chiffres et de lettres qui indique le nombre de bits qui doit être présent dans une transmission de données. Si le nombre de bits indiqué par le checksum et le nombre de bits réel sont différents, il y a un problème. Le `checksum` est utilisé avec les protocoles `TCP` et `UDP`. Le `checksum` value est assigné en exécutant une `cryptographic hash function`. C'est un algorithme qui traduit un message en bit d'une taille fixe appelé `hash-value` ou message digest. Ce mapping est déterministe et quasi impossible à inverser. Il existe plusieurs exemples de fonctions comme les `SHA` ou `DSA` ou encore `MD5`.
+Un des contextes où j'ai rencontré ces algorithmes est la génération de clés ssh. J'ai voulu testé leur déterminisme en rentrant la même passphrase, sauf que je n'obtiens pas le même résultat. L'occasion de découvrir l'existence de la couche de `RNG (Random Number Generator)` dans l'algorithme de génération de clé. Plus le `RNG` est exécuté dans un environnement avec de l'`entropy` plus il est efficace. L'occasion d'essayer de comprendre le principe d'`entropy` avec une [video](https://www.youtube.com/watch?v=YM-uykVfq_E).
  
 Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé en la donnant à un `hash fonction` avec un index derrière lequel se trouve la valeur que l'on souhaite trouver. Il est donc bien question d'une map mais avec une complexité de recherche et d'insertion en moyenne de Θ(1).
 La 'hashmap' est utilisée quand on crée des `index` en base de données. Il y a un coût en espace mémoire de Θ(n). C'est ce point qui oblige à utiliser les `index` de manière réfléchie.
+
 
 
 ## TODO
