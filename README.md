@@ -26,12 +26,17 @@ Je vais faire un premier Kata sans objectif particulier. J'ai seulement lu l'int
 
 ### Bank OCR
 
+Pour ce premier Kata je n'ai pas grand chose à ajouter. Je pense que le point central est la manière de gerer les digits. J'ai tradruis un digits en 3 lignes de chacunes 3 valeurs qui se lit de haut en bas et de gauche a droite. Ainsi un 1 signifie qu'il y a un `|` si on est en colonne 1 ou 3, ou un `_` en colonne 2. Cette string est couteuse et convertir ça en binaire puis en entier serai plus efficace.
+
+Dans ce premier kata je n'ai pas pris en compte de guide line. En revanche c'est l'occasion de creuser certaines definitions et concepts que je ne maitrise pas.
+Le `checksum` est une string de chiffres et de lettres qui indique le nombre de bits qui doit être présent dans une transmission de donnée. Si le nombre de bits indiqué par le checksum et le nombres de bits reel sont different il y a un problème. Le `checksum` est utilisé avec les protocols `TCP` et `UDP`. Le `checksum` value est assigné en executant une `cryptographique hash fonction`. C'est un algorithme qui traduit un message en bit d'une taille fixe appelé `hash-value` ou message digest. Ce mapping est deterministe et quasi impossible a inverser. Il existe plusieurs exemple de fonction comme les `SHA` ou `DSA` ou encore `MD5`.
+
+Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé en la donnant à un `hash fonction` avec un index derriere lequel se trouve la valeur que l'on souhaite trouver. Il est donc bien question d'une map mais avec une complexité de recherche et d'insertion en moyenne de Θ(1).
+La `hash map` est utilisé quand on crée des `index` en base de donnée. Il y a un cout en espace memoire de Θ(n). C'est ce point qui oblige à utiliser les `indexs` de maniere reflechi.
+
 
 ## TODO
 
-- hashmap
-  - checksum
-  - MD5
 - array / slice
 - API
   - JWT
