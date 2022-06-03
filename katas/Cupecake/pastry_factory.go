@@ -2,19 +2,21 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
 type pastry interface {
-	getPrice() float32
+	getPrice() string
 	getTopping() string
 }
 
 type cupecake struct {
 }
 
-func (c *cupecake) getPrice() float32 {
-	return 1.0
+func (c *cupecake) getPrice() string {
+	r := fmt.Sprintf("%.2f$ for \"%s\"", 1.0, c.getTopping())
+	return r
 }
 
 func (c *cupecake) getTopping() string {
@@ -24,20 +26,27 @@ func (c *cupecake) getTopping() string {
 type cookie struct {
 }
 
-func (c *cookie) getPrice() float32 {
-	return 2.0
+func (c *cookie) getPrice() string {
+	r := fmt.Sprintf("%.2f$ for \"%s\"", 2.0, c.getTopping())
+	return r
 }
 
 func (c *cookie) getTopping() string {
 	return "cookie"
 }
 
+// Topping section
+// Chocolate <<<
 type chocolateTopping struct {
 	pastry pastry
 }
 
-func (t *chocolateTopping) getPrice() float32 {
-	r := t.pastry.getPrice() + 0.1
+func (t *chocolateTopping) getPrice() string {
+	s := strings.Split(t.pastry.getPrice(), " for ")
+	f, _ := strconv.ParseFloat(s[0][:len(s[0])-1], 32)
+	p := f + 0.1
+
+	r := fmt.Sprintf("%.2f$ for \"%s\"", p, t.getTopping())
 	return r
 }
 
@@ -53,12 +62,17 @@ func (t *chocolateTopping) getTopping() string {
 	return r
 }
 
+// Nuts <<<
 type nutsTopping struct {
 	pastry pastry
 }
 
-func (t *nutsTopping) getPrice() float32 {
-	r := t.pastry.getPrice() + 0.2
+func (t *nutsTopping) getPrice() string {
+	s := strings.Split(t.pastry.getPrice(), " for ")
+	f, _ := strconv.ParseFloat(s[0][:len(s[0])-1], 32)
+	p := f + 0.2
+
+	r := fmt.Sprintf("%.2f$ for \"%s\"", p, t.getTopping())
 	return r
 }
 
@@ -74,12 +88,17 @@ func (t *nutsTopping) getTopping() string {
 	return r
 }
 
+// Candy <<<
 type candyTopping struct {
 	pastry pastry
 }
 
-func (t *candyTopping) getPrice() float32 {
-	r := t.pastry.getPrice() + 0.3
+func (t *candyTopping) getPrice() string {
+	s := strings.Split(t.pastry.getPrice(), " for ")
+	f, _ := strconv.ParseFloat(s[0][:len(s[0])-1], 32)
+	p := f + 0.3
+
+	r := fmt.Sprintf("%.2f$ for \"%s\"", p, t.getTopping())
 	return r
 }
 
@@ -101,10 +120,26 @@ func main() {
 	cupecakeWithChocolate := &chocolateTopping{
 		pastry: cupecake,
 	}
+	fmt.Println(cupecakeWithChocolate.getPrice())
+	fmt.Println(cupecakeWithChocolate.getTopping())
+
 	cupecakeWithChocolateAndNuts := &nutsTopping{
 		pastry: cupecakeWithChocolate,
 	}
 	fmt.Println(cupecakeWithChocolateAndNuts.getPrice())
 	fmt.Println(cupecakeWithChocolateAndNuts.getTopping())
+
+	cupecakeWithChocolateAndNutsAndCandy := &candyTopping{
+		pastry: cupecakeWithChocolateAndNuts,
+	}
+	fmt.Println(cupecakeWithChocolateAndNutsAndCandy.getPrice())
+	fmt.Println(cupecakeWithChocolateAndNutsAndCandy.getTopping())
+
+	cookie := &cookie{}
+	cookieWithChocolate := &chocolateTopping{
+		pastry: cookie,
+	}
+	fmt.Println(cookieWithChocolate.getPrice())
+	fmt.Println(cookieWithChocolate.getTopping())
 
 }
