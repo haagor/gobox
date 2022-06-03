@@ -36,7 +36,9 @@ Un des contextes où j'ai rencontré ces algorithmes est la génération de clé
 Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé en la donnant à un `hash fonction` avec un index derrière lequel se trouve la valeur que l'on souhaite trouver. Il est donc bien question d'une map mais avec une complexité de recherche et d'insertion en moyenne de Θ(1).
 La 'hashmap' est utilisée quand on crée des `index` en base de données. Il y a un coût en espace mémoire de Θ(n). C'est ce point qui oblige à utiliser les `index` de manière réfléchie.
 
+### [Birthday Greetings](https://codingdojo.org/kata/birthday-greetings/)
 
+**TODO**: bon kata pour `project structure` et `database` ! 
 
 ## TODO
 
