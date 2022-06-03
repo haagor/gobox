@@ -38,7 +38,7 @@ Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé 
 La 'hashmap' est utilisée quand on crée des `index` en base de données. Il y a un coût en espace mémoire de Θ(n). C'est ce point qui oblige à utiliser les `index` de manière réfléchie.
 
 ### Cupecake
-![](https://github.com/haagor/gobox/blob/main/img/cupecake.png)
+![](https://github.com/haagor/gobox/blob/main/img/cupcake.png)
 
 Dans ce Kata j'ai voulu mettre en application des guide line lu dans [Practical-go](https://dave.cheney.net/practical-go/presentations/qcon-china.html#_identifiers).
 Ce Kata invite aussi à découvrir le `Decorator pattern`. Je ne connaissais pas. Il s'appuie sur la récursivité. Il permet d'ajouter dynamiquement des comportements à un objet. Je n'ai pas d'exemple d'utilisation dans un cas réel.
