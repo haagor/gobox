@@ -25,6 +25,7 @@ Je vais faire un premier Kata sans objectif particulier. J'ai seulement lu l'int
 ) et il y a beaucoup de guide line dans ce texte. Je vais essayer à chacun de mes Katas d'ajouter des guide lines. Ainsi Mon premier sera libre, puis il y aura de plus en plus de point. Je devrais pouvoir observer une evolution interressante de mon code.
 
 ### Bank OCR
+![](https://github.com/haagor/gobox/blob/main/img/digits.png)
 
 Pour ce premier Kata je n'ai pas grand chose à ajouter. Je pense que le point central est la manière de gérer les digits. J'ai traduit un digits en 3 lignes de chacune 3 valeurs qui se lit de haut en bas et de gauche à droite. Ainsi un 1 signifie qu'il y a un `|` si on est en colonne 1 ou 3, ou un `_` en colonne 2. Cette string est coûteuse et convertir ça en binaire puis en entier serait plus efficace.
  
@@ -35,6 +36,14 @@ Un des contextes où j'ai rencontré ces algorithmes est la génération de clé
  
 Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé en la donnant à un `hash fonction` avec un index derrière lequel se trouve la valeur que l'on souhaite trouver. Il est donc bien question d'une map mais avec une complexité de recherche et d'insertion en moyenne de Θ(1).
 La 'hashmap' est utilisée quand on crée des `index` en base de données. Il y a un coût en espace mémoire de Θ(n). C'est ce point qui oblige à utiliser les `index` de manière réfléchie.
+
+### Cupecake
+![](https://github.com/haagor/gobox/blob/main/img/cupecake.png)
+
+Dans ce Kata j'ai voulu mettre en application des guide line lu dans [Practical-go](https://dave.cheney.net/practical-go/presentations/qcon-china.html#_identifiers).
+Ce Kata invite aussi à découvrir le `Decorator pattern`. Je ne connaissais pas. Il s'appuie sur la récursivité. Il permet d'ajouter dynamiquement des comportements à un objet. Je n'ai pas d'exemple d'utilisation dans un cas réel.
+
+Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cela et que le fait que je fasse ce Kata dans un seul fichier accentue ce point. L'exemple est artificiel et je vais mettre la factorisation de côté.
 
 ### [Birthday Greetings](https://codingdojo.org/kata/birthday-greetings/)
 
