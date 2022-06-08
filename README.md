@@ -24,7 +24,7 @@ Si j'arrive à faire régulièrement du sport, je dois réussir à investir rég
 Je vais faire un premier Kata sans objectif particulier. J'ai seulement lu l'introduction de [Practical-Go](https://dave.cheney.net/practical-go/presentations/qcon-china.html
 ) et il y a beaucoup de guide line dans ce texte. Je vais essayer à chacun de mes Katas d'ajouter des guide lines. Ainsi Mon premier sera libre, puis il y aura de plus en plus de point. Je devrais pouvoir observer une evolution interressante de mon code.
 
-### Bank OCR
+### ![Bank OCR](https://github.com/haagor/gobox/tree/main/katas/bankOCR#readme)
 ![](https://github.com/haagor/gobox/blob/main/img/digits.png)
 
 Pour ce premier Kata je n'ai pas grand chose à ajouter. Je pense que le point central est la manière de gérer les digits. J'ai traduit un digits en 3 lignes de chacune 3 valeurs qui se lit de haut en bas et de gauche à droite. Ainsi un 1 signifie qu'il y a un `|` si on est en colonne 1 ou 3, ou un `_` en colonne 2. Cette string est coûteuse et convertir ça en binaire puis en entier serait plus efficace.
@@ -37,7 +37,7 @@ Un des contextes où j'ai rencontré ces algorithmes est la génération de clé
 Une `hash table` ou `hash map` fonctionne sur le même principe: on map un clé en la donnant à un `hash fonction` avec un index derrière lequel se trouve la valeur que l'on souhaite trouver. Il est donc bien question d'une map mais avec une complexité de recherche et d'insertion en moyenne de Θ(1).
 La 'hashmap' est utilisée quand on crée des `index` en base de données. Il y a un coût en espace mémoire de Θ(n). C'est ce point qui oblige à utiliser les `index` de manière réfléchie.
 
-### Cupecake
+### ![Cupecake](https://github.com/haagor/gobox/tree/main/katas/cupecake#readme)
 ![](https://github.com/haagor/gobox/blob/main/img/cupcake.png)
 
 Dans ce Kata j'ai voulu mettre en application des guide line lu dans [Practical-go](https://dave.cheney.net/practical-go/presentations/qcon-china.html#_identifiers).
@@ -45,7 +45,7 @@ Ce Kata invite aussi à découvrir le `Decorator pattern`. Je ne connaissais pas
 
 Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cela et que le fait que je fasse ce Kata dans un seul fichier accentue ce point. L'exemple est artificiel et je vais mettre la factorisation de côté.
 
-### [Birthday Greetings](https://codingdojo.org/kata/birthday-greetings/)
+### [Birthday Greetings](https://github.com/haagor/gobox/tree/main/katas/birthdayGreetings#readme)
 ![](https://github.com/haagor/gobox/blob/main/img/hb.png)
 
 Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL`. Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`.
