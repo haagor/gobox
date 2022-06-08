@@ -46,8 +46,9 @@ Ce Kata invite aussi à découvrir le `Decorator pattern`. Je ne connaissais pas
 Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cela et que le fait que je fasse ce Kata dans un seul fichier accentue ce point. L'exemple est artificiel et je vais mettre la factorisation de côté.
 
 ### [Birthday Greetings](https://codingdojo.org/kata/birthday-greetings/)
+![](https://github.com/haagor/gobox/blob/main/img/hb.png)
 
-**TODO**: bon kata pour `project structure` et `database` ! 
+Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL`. Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`.
 
 ## TODO
 
