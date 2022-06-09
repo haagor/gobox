@@ -1,4 +1,4 @@
-package main
+package adapter
 
 import (
 	"database/sql"
@@ -21,7 +21,7 @@ const (
 
 var db *sql.DB
 
-func getFriendsByBirthday(birthDate string) {
+func GetFriendsByBirthday(birthDate time.Time) []friend.Friend {
 	stmt, err := db.Prepare(
 		"SELECT email, first_name, last_name, birth_date FROM friends WHERE birth_date = $1")
 	if err != nil {
@@ -29,26 +29,23 @@ func getFriendsByBirthday(birthDate string) {
 	}
 	defer stmt.Close()
 
-	l := "2006-01-02"
-	s := birthDate
-	d, err := time.Parse(l, s)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	rows, err := stmt.Query(d)
+	rows, err := stmt.Query(birthDate)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer rows.Close()
 
-	var friend friend.Friend
+	var res []friend.Friend
+	var f friend.Friend
 	for rows.Next() {
-		rows.Scan(&friend.Email, &friend.First_name, &friend.Last_name, &friend.Birth)
+		rows.Scan(&f.Email, &f.First_name, &f.Last_name, &f.Birth)
+		res = append(res, f)
 	}
 	if err = rows.Err(); err != nil {
 		log.Fatal(err)
 	}
+
+	return res
 }
 
 func getAllFriends() {
@@ -106,16 +103,4 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
-
-	getAllFriends()
-	getFriendsByBirthday("1993-10-24")
-
-	l := "2006-01-02"
-	s := "1992-03-21"
-	d, err := time.Parse(l, s)
-	if err != nil {
-		log.Fatal(err)
-	}
-	f := friend.Friend{Email: "f.t@wanaddo.fr", First_name: "Fabien", Last_name: "Tores", Birth: d}
-	setFriend(f)
 }

@@ -48,7 +48,9 @@ Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cel
 ### [Birthday Greetings](https://github.com/haagor/gobox/tree/main/katas/birthdayGreetings#readme)
 ![](https://github.com/haagor/gobox/blob/main/img/hb.png)
 
-Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL` et la lib `database/sql`. Les tutorials ne manque pas à ce niveau, je suis celui-ci ![tuto](http://go-database-sql.org/index.html). Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`.
+Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL` et la lib `database/sql`. Les tutorials ne manque pas à ce niveau, je suis celui-ci ![tuto](http://go-database-sql.org/index.html). Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`, en tout cas j'essaye. Je ne pense pas que ma première implémentation soit fidèle à cette architecture mais cela va me permettre de voir clairement les points que je ne comprends pas.
+
+`NEXT test usecase with db mock`
 
 ## TODO
 
