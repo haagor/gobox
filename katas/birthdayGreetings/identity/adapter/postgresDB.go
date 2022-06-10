@@ -2,7 +2,6 @@ package adapter
 
 import (
 	"database/sql"
-	"fmt"
 	"log"
 	"time"
 
@@ -12,17 +11,17 @@ import (
 )
 
 const (
-	host     = "localhost"
-	port     = 5432
-	user     = "goadapter"
-	password = "goadapter"
-	dbname   = "identity"
+	Host     = "localhost"
+	Port     = 5432
+	User     = "goadapter"
+	Password = "goadapter"
+	Dbname   = "identity"
 )
 
-var db *sql.DB
+var Db *sql.DB
 
-func GetFriendsByBirthday(birthDate time.Time) []friend.Friend {
-	stmt, err := db.Prepare(
+func GetFriendsByBirthDate(birthDate time.Time) []friend.Friend {
+	stmt, err := Db.Prepare(
 		"SELECT email, first_name, last_name, birth_date FROM friends WHERE birth_date = $1")
 	if err != nil {
 		log.Fatal(err)
@@ -49,7 +48,7 @@ func GetFriendsByBirthday(birthDate time.Time) []friend.Friend {
 }
 
 func getAllFriends() {
-	stmt, err := db.Prepare(
+	stmt, err := Db.Prepare(
 		"SELECT * FROM friends")
 	if err != nil {
 		log.Fatal(err)
@@ -72,7 +71,7 @@ func getAllFriends() {
 }
 
 func setFriend(f friend.Friend) {
-	stmt, err := db.Prepare("INSERT INTO friends(email, first_name, last_name, birth_date) VALUES($1, $2, $3, $4)")
+	stmt, err := Db.Prepare("INSERT INTO friends(email, first_name, last_name, birth_date) VALUES($1, $2, $3, $4)")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -90,17 +89,4 @@ func setFriend(f friend.Friend) {
 		log.Fatal(err)
 	}
 	log.Printf("ID = %d, affected = %d\n", lastId, rowCnt)
-}
-
-func main() {
-	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		host, port, user, password, dbname)
-
-	var err error
-	db, err = sql.Open("postgres", psqlInfo)
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
 }

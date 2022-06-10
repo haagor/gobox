@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func getBirthsForDate(birth string) [][3]string {
+func GetFriendsBornAt(birth string) [][3]string {
 	var res [][3]string
 
 	l := "2006-01-02"
@@ -16,7 +16,7 @@ func getBirthsForDate(birth string) [][3]string {
 		log.Fatal(err)
 	}
 
-	f := postgresDB.GetFriendsByBirthday(b)
+	f := postgresDB.GetFriendsByBirthDate(b)
 	for _, v := range f {
 		res = append(res, [3]string{v.Email, v.First_name, v.Last_name})
 	}

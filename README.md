@@ -50,7 +50,16 @@ Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cel
 
 Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL` et la lib `database/sql`. Les tutorials ne manque pas à ce niveau, je suis celui-ci ![tuto](http://go-database-sql.org/index.html). Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`, en tout cas j'essaye. Je ne pense pas que ma première implémentation soit fidèle à cette architecture mais cela va me permettre de voir clairement les points que je ne comprends pas.
 
-`NEXT test usecase with db mock`
+`NEXT test usecase with db mock, add log, declare Db?`
+
+### Jungle
+![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
+
+Ici il n'est pas vraiment question de katas mais d'un dossier ou j'empile des petits tests ou des choses que je veux verifier.
+
+  - Suite à un test technique je me retrouve à devoir faire une fonction qui donne la somme des 2 plus grands entiers de ma slice. Je fais une première implémentation naïve qui trouve la solution en 1 parcours de slice. Puis une autre implémentation, j'utilise le sort natif de Go et j'addition les 2 derniers éléments. Sur cette implémentation les performances sont faibles. /!\ le sort natif utilise des interfaces pour des questions de généricité, cela à un coup et rend ce tri moins performant qu'un quicksort écrit à la main qui n'utilise pas d'interface.
+
+
 
 ## TODO
 
