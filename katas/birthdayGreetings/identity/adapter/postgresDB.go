@@ -7,7 +7,7 @@ import (
 
 	_ "github.com/lib/pq"
 
-	friend "identity/entity"
+	friend "github.com/haagor/gobox/katas/birthdayGreetings/identity/entity"
 )
 
 const (

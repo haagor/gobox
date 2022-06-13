@@ -1,8 +1,9 @@
 package entrypoint
 
 import (
-	friendManager "identity/usecase"
 	"net/http"
+
+	friendManager "github.com/haagor/gobox/katas/birthdayGreetings/identity/usecase"
 
 	"github.com/gin-gonic/gin"
 )

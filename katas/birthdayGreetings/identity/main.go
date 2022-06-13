@@ -3,10 +3,11 @@ package main
 import (
 	"database/sql"
 	"fmt"
-	postgresDB "identity/adapter"
-	friend "identity/entrypoint"
 
 	"github.com/gin-gonic/gin"
+
+	postgresDB "github.com/haagor/gobox/katas/birthdayGreetings/identity/adapter"
+	friend "github.com/haagor/gobox/katas/birthdayGreetings/identity/entrypoint"
 )
 
 func main() {
