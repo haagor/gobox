@@ -19,7 +19,7 @@ func GetFriendsBornAt(birth string) [][3]string {
 
 	f := DBAdapter.GetFriendsByBirthDate(b)
 	for _, v := range f {
-		res = append(res, [3]string{v.Email, v.First_name, v.Last_name})
+		res = append(res, [3]string{v.Email, v.FirstName, v.LastName})
 	}
 
 	return res

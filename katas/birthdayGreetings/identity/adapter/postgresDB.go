@@ -37,7 +37,7 @@ func GetFriendsByBirthDate(birthDate time.Time) []friend.Friend {
 	var res []friend.Friend
 	var f friend.Friend
 	for rows.Next() {
-		rows.Scan(&f.Email, &f.First_name, &f.Last_name, &f.Birth)
+		rows.Scan(&f.Email, &f.FirstName, &f.LastName, &f.Birth)
 		res = append(res, f)
 	}
 	if err = rows.Err(); err != nil {
@@ -63,7 +63,7 @@ func getAllFriends() {
 
 	var friend friend.Friend
 	for rows.Next() {
-		rows.Scan(&friend.Email, &friend.First_name, &friend.Last_name, &friend.Birth)
+		rows.Scan(&friend.Email, &friend.FirstName, &friend.LastName, &friend.Birth)
 	}
 	if err = rows.Err(); err != nil {
 		log.Fatal(err)
@@ -76,11 +76,11 @@ func setFriend(f friend.Friend) {
 		log.Fatal(err)
 	}
 
-	res, err := stmt.Exec(f.Email, f.First_name, f.Last_name, f.Birth)
+	res, err := stmt.Exec(f.Email, f.FirstName, f.LastName, f.Birth)
 	if err != nil {
 		log.Fatal(err)
 	}
-	lastId, err := res.LastInsertId()
+	lastID, err := res.LastInsertId()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -88,5 +88,5 @@ func setFriend(f friend.Friend) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("ID = %d, affected = %d\n", lastId, rowCnt)
+	log.Printf("ID = %d, affected = %d\n", lastID, rowCnt)
 }

@@ -3,7 +3,6 @@ package main
 import (
 	"database/sql"
 	"fmt"
-
 	"github.com/gin-gonic/gin"
 
 	postgresDB "github.com/haagor/gobox/katas/birthdayGreetings/identity/adapter"
