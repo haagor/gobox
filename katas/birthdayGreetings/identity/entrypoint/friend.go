@@ -3,7 +3,7 @@ package entrypoint
 import (
 	"net/http"
 
-	friendManager "github.com/haagor/gobox/katas/birthdayGreetings/identity/usecase"
+	usecase "github.com/haagor/gobox/katas/birthdayGreetings/identity/usecase"
 
 	"github.com/gin-gonic/gin"
 )
@@ -12,13 +12,17 @@ type Body struct {
 	Date string `json:"date"`
 }
 
-func GetFriendsBornAt(c *gin.Context) {
-	d := Body{}
+func GetFriendsBornAt(db usecase.DBAdapter) gin.HandlerFunc {
+	fn := func(c *gin.Context) {
+		d := Body{}
 
-	if err := c.BindJSON(&d); err != nil {
-		return
+		if err := c.BindJSON(&d); err != nil {
+			return
+		}
+
+		f := usecase.GetFriendsBornAt(db, d.Date)
+		c.IndentedJSON(http.StatusOK, f)
 	}
 
-	f := friendManager.GetFriendsBornAt(d.Date)
-	c.IndentedJSON(http.StatusOK, f)
+	return gin.HandlerFunc(fn)
 }

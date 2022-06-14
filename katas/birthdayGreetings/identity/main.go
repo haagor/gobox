@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 
 	postgresDB "github.com/haagor/gobox/katas/birthdayGreetings/identity/adapter"
@@ -15,14 +16,16 @@ func main() {
 		postgresDB.Host, postgresDB.Port, postgresDB.User, postgresDB.Password, postgresDB.Dbname)
 
 	var err error
-	postgresDB.Db, err = sql.Open("postgres", psqlInfo)
+	var db *sql.DB
+	db, err = sql.Open("postgres", psqlInfo)
 	if err != nil {
 		panic(err)
 	}
-	defer postgresDB.Db.Close()
+	defer db.Close()
+	dba := postgresDB.PostgresAdapter{db}
 
 	router := gin.Default()
-	router.GET("/friends", friend.GetFriendsBornAt)
+	router.GET("/friends", friend.GetFriendsBornAt(dba))
 
 	router.Run("localhost:8080")
 }

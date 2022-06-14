@@ -18,10 +18,12 @@ const (
 	Dbname   = "identity"
 )
 
-var Db *sql.DB
+type PostgresAdapter struct {
+	DB *sql.DB
+}
 
-func GetFriendsByBirthDate(birthDate time.Time) []friend.Friend {
-	stmt, err := Db.Prepare(
+func (pa PostgresAdapter) GetFriendsByBirthDate(birthDate time.Time) []friend.Friend {
+	stmt, err := pa.DB.Prepare(
 		"SELECT email, first_name, last_name, birth_date FROM friends WHERE birth_date = $1")
 	if err != nil {
 		log.Fatal(err)
@@ -47,8 +49,8 @@ func GetFriendsByBirthDate(birthDate time.Time) []friend.Friend {
 	return res
 }
 
-func getAllFriends() {
-	stmt, err := Db.Prepare(
+func (pa PostgresAdapter) GetAllFriends() {
+	stmt, err := pa.DB.Prepare(
 		"SELECT * FROM friends")
 	if err != nil {
 		log.Fatal(err)
@@ -70,8 +72,8 @@ func getAllFriends() {
 	}
 }
 
-func setFriend(f friend.Friend) {
-	stmt, err := Db.Prepare("INSERT INTO friends(email, first_name, last_name, birth_date) VALUES($1, $2, $3, $4)")
+func (pa PostgresAdapter) SetFriend(f friend.Friend) {
+	stmt, err := pa.DB.Prepare("INSERT INTO friends(email, first_name, last_name, birth_date) VALUES($1, $2, $3, $4)")
 	if err != nil {
 		log.Fatal(err)
 	}
