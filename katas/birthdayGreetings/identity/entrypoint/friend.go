@@ -12,7 +12,7 @@ type Body struct {
 	Date string `json:"date"`
 }
 
-func GetFriendsBornAt(db usecase.DBAdapter) gin.HandlerFunc {
+func HandleGetFriendsBornAt(db usecase.DBAdapter) gin.HandlerFunc {
 	fn := func(c *gin.Context) {
 		d := Body{}
 

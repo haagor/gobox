@@ -25,7 +25,7 @@ func main() {
 	dba := postgresDB.PostgresAdapter{db}
 
 	router := gin.Default()
-	router.GET("/friends", friend.GetFriendsBornAt(dba))
+	router.GET("/friends", friend.HandleGetFriendsBornAt(dba))
 
 	router.Run("localhost:8080")
 }

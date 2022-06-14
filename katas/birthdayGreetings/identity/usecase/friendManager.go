@@ -17,8 +17,7 @@ func GetFriendsBornAt(adapter DBAdapter, birth string) [][3]string {
 	var res [][3]string
 
 	l := "2006-01-02"
-	s := birth
-	b, err := time.Parse(l, s)
+	b, err := time.Parse(l, birth)
 	if err != nil {
 		log.Fatal(err)
 	}
