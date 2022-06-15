@@ -1,26 +1,37 @@
 package usecase
 
 import (
-	"log"
-	"testing"
-	"time"
+    "log"
+    "testing"
+    "time"
 
-	"github.com/golang/mock/gomock"
+    "github.com/golang/mock/gomock"
+    "github.com/stretchr/testify/assert"
 
-	mocks "github.com/haagor/gobox/katas/birthdayGreetings/identity/usecase/mocks"
+    friend "github.com/haagor/gobox/katas/birthdayGreetings/identity/entity"
+    mocks "github.com/haagor/gobox/katas/birthdayGreetings/identity/usecase/mocks"
 )
 
-func TestUse(t *testing.T) {
-	mockCtrl := gomock.NewController(t)
-	defer mockCtrl.Finish()
+func TestGetFriendsBornAt(t *testing.T) {
+    mockCtrl := gomock.NewController(t)
+    defer mockCtrl.Finish()
 
-	mockDBAdapter := mocks.NewMockDBAdapter(mockCtrl)
+    mockDBAdapter := mocks.NewMockDBAdapter(mockCtrl)
 
-	b, err := time.Parse("2006-01-02", "1993-10-24")
-	if err != nil {
-		log.Fatal(err)
-	}
+    b, err := time.Parse("2006-01-02", "1993-10-24")
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	mockDBAdapter.EXPECT().GetFriendsByBirthDate(b).Return(nil).Times(1)
-	GetFriendsBornAt(mockDBAdapter, "1993-10-24")
+    mockDBAdapter.EXPECT().GetFriendsByBirthDate(b).Return(nil).Times(1)
+    r := GetFriendsBornAt(mockDBAdapter, "1993-10-24")
+    assert.Equal(t, 0, len(r))
+
+    var fs []friend.Friend
+    fs = append(fs, friend.Friend{FirstName: "Julien", LastName: "Paris", Email: "j.p@wanadoo.fr", Birth: b})
+    mockDBAdapter.EXPECT().GetFriendsByBirthDate(b).Return(fs).Times(1)
+    r = GetFriendsBornAt(mockDBAdapter, "1993-10-24")
+    var e [][3]string
+    e = append(e, [3]string{"j.p@wanadoo.fr", "Julien", "Paris"})
+    assert.Equal(t, r, e)
 }
