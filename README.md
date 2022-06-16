@@ -51,7 +51,11 @@ Il y a beaucoup de duplication dans mon code, j'assume que ce pattern induit cel
 
 Avec ce kata c'est l'occasion de mettre en place une base de données. J'utilise `PostreSQL` et la lib `database/sql`. Les tutorials ne manque pas à ce niveau, je suis [go-database-sql](http://go-database-sql.org/overview.html). Coté API j'utilise gin et je me suis appuyé sur [go.dev](https://go.dev/doc/tutorial/web-service-gin). Je vais séparer mon code en 2 modules : Identity et Contact. Ainsi c'est l'occasion d'implémenter des adapter pour ma base de donnée, mais aussi pour l'envoi d'email ou sms. C'est aussi un bon prétexte pour implémenter des API. Je structure cela en suivant les principes de la `Clean Architecture`, en tout cas j'essaye. Je ne pense pas que ma première implémentation soit fidèle à cette architecture mais cela va me permettre de voir clairement les points que je ne comprends pas.
 
-`NEXT test usecase with db mock, add log, declare Db?`
+Et en effet je suis loin d'une clean archi! Je n'ai pas implémenté d'interface pour isoler chaque couche. Mon objet 'friend.Friend' se retrouve un peu partout dans chaque module. Mais ce Kata m'a permis de mettre en place une API avec le lib `github.com/gin-gonic/gin"` et de mettre en place un adapter de db avec `database/sql`. J'ai aussi fait un schéma pour mieux visualiser certains points de mon implémentation.
+![](https://github.com/haagor/gobox/blob/main/img/arch1.png)
+
+
+`NEXT add log, read/code error handling`
 
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
@@ -70,10 +74,7 @@ Ici il n'est pas vraiment question de katas mais d'un dossier ou j'empile des pe
   - Token / certificat
   - http / https
   - context
-- DataBase
-  - exp PSQL
-  - lib go PSQL
-  - journalisation BD
+- journalisation BD
 
 
 ---
