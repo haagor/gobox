@@ -60,6 +60,28 @@ Et en effet je suis loin d'une clean archi! Je n'ai pas implémenté d'interface
 ### [Christmas Delivery](https://github.com/haagor/gobox/tree/main/katas/christmasdelivery#readme)
 ![](https://github.com/haagor/gobox/blob/main/img/christmasdelivery.png)
 
+Dans ce Kata il est question de programmation concurrente. Je vais itérer sur les différents usecases sans essayer de les anticiper. Pour le premier usecase ma machine à joué et mon elf fonctionne comme attendu :
+
+```
+$ go run main.go 
+"Gift n° 7eea5c73-146b-4703-9cc6-3593ada5db83 handle captain !"
+* 1 gift created *
+* 1 gift created *
+"Gift n° 198c5ea2-5965-459d-a6a8-f981009d90ff handle captain !"
+* 1 gift created *
+* 1 gift created *
+"Gift n° f454aa4f-e781-44dc-9811-da2823f37469 handle captain !"
+* 1 gift created *
+* 1 gift created *
+* 1 gift created *
+"Gift n° cd073103-772e-43fd-a667-40e6d241c4a5 handle captain !"
+* 1 gift created *
+* 1 gift created *
+"Gift n° e42d629e-63f8-4b86-bb26-6b71f169830f handle captain !"
+* 1 gift created *
+* Creating gifts finish *
+```
+
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
 
