@@ -8,7 +8,7 @@ Currently only one Elf can put a present on his Sleigh at a time and Santa wants
 
 In order to receive presents yourself this year, you’ll have to design a system to support his changing process.
 
-#### User Story 1
+### User Story 1
 
 Start off by recreating the current system Santa has.
 
@@ -32,15 +32,17 @@ Santa Sleigh
 
 Once a delivery elf has a present it will take him a while to put it onto Santa’s Sleigh. Once he has he calls back to say he’s available to transport another present.
 
-#### User Story 2
+### User Story 2
 
-```Santa has asked Mrs Claus to organise a number of delivery elves who will put presents onto his Sleigh.```
+Santa has asked Mrs Claus to organise a number of delivery elves who will put presents onto his Sleigh.
 
 Mrs Claus will operate as a present receiver for the Toy Machines. She will then give these presents to the available delivery elves. If no elves are available she will keep hold of the present until they are available.
 
+```
 Toy Machine [1-N] -> (Gives Present) -> Mrs Claus --> (Gives Present) -> Elf [1-N] --> (Packs onto) --> Santa Sleigh
+```
 
-#### User Story 3
+### User Story 3
 
 Each present forms part of a families delivery, which consist of 1..N presents.
 
@@ -50,7 +52,7 @@ But the delivery elves are an expensive resource so we’d prefer the requests t
 
 You will need to devise a strategy to allow Mrs Claus to deliver presents by family when possible.
 
-#### User Story 3
+### User Story 3
 
 Santa has just received news that some families have been very naughty during the holiday period. He wants to be able to cancel presents for these families by telling Mrs Claus to discard their presents. Sleigh Interface
 

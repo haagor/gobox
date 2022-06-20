@@ -57,6 +57,9 @@ Et en effet je suis loin d'une clean archi! Je n'ai pas implémenté d'interface
 
 `NEXT add log, read/code error handling`
 
+### [Christmas Delivery](https://github.com/haagor/gobox/tree/main/katas/christmasdelivery#readme)
+![](https://github.com/haagor/gobox/blob/main/img/christmasdelivery.png)
+
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
 
