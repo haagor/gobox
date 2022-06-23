@@ -90,7 +90,8 @@ Pour le usecase n°2 je n'ai pas vraiment cette notion d'elf disponible mais plu
 Ici il n'est pas vraiment question de katas mais d'un dossier ou j'empile des petits tests ou des choses que je veux verifier.
 
   - Suite à un test technique je me retrouve à devoir faire une fonction qui donne la somme des 2 plus grands entiers de ma slice. Je fais une première implémentation naïve qui trouve la solution en 1 parcours de slice. Puis une autre implémentation, j'utilise le sort natif de Go et j'addition les 2 derniers éléments. Sur cette implémentation les performances sont faibles. /!\ le sort natif utilise des interfaces pour des questions de généricité, cela à un coup et rend ce tri moins performant qu'un quicksort écrit à la main qui n'utilise pas d'interface.
-  - Un point sur les microservices. Dans une vidéo d'histoire sur Napoléon je me suis retrouvé avec un parallèle assez intéressant entre l'organisation de l'armée et celui d'un logiciel. Évidemment ce genre de parallèle sont nombreux et l'informatique n'a pas inventé grand-chose selon moi. Je vais creuser ce parallèle, cela peut être un excellent outil pédagogique!
+  - Un point sur les microservices. Dans une vidéo d'histoire sur Napoléon je me suis retrouvé avec un parallèle assez intéressant entre l'organisation de l'armée et celui d'un logiciel. Évidemment ce genre de parallèle sont nombreux et l'informatique n'a pas inventé grand-chose selon moi. Je vais creuser ce parallèle, cela peut être un excellent outil pédagogique! Mon point de depart a été cette [video](https://www.youtube.com/watch?v=bhQe2cjr5XQ)
+
 ![](https://github.com/haagor/gobox/blob/main/img/napoleon.png)
 
 
