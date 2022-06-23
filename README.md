@@ -82,6 +82,8 @@ $ go run main.go
 * Creating gifts finish *
 ```
 
+Pour le usecase n°2 je n'ai pas vraiment cette notion d'elf disponible mais plutôt de chan à 1 élément sur lequel écoute tous les elfs. Ainsi Mrs Claus les distribuent un par un et si aucun elf est disponible il va attendre.
+
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
 

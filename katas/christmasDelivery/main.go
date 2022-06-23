@@ -40,11 +40,38 @@ func (e *elf) handleGift() {
 	}
 }
 
+type mrsClaus struct {
+	tm              toyMachine
+	pipeElfDelivery chan gift
+}
+
+func (mc *mrsClaus) handleToyMachineDelivery() {
+	var standByGift []gift
+	go func() {
+		for g := range mc.tm.pipeDelivery {
+			standByGift = append(standByGift, g)
+		}
+	}()
+
+	go func() {
+		for {
+			if len(standByGift) > 0 {
+				mc.pipeElfDelivery <- standByGift[0]
+				standByGift = standByGift[1:]
+			}
+		}
+	}()
+}
+
 func main() {
 	var done sync.WaitGroup
 
 	pd := make(chan gift, 100)
 	tm := toyMachine{pd}
+
+	ped := make(chan gift, 1)
+	claus := mrsClaus{tm, ped}
+	go claus.handleToyMachineDelivery()
 
 	done.Add(1)
 	go func() {
@@ -52,8 +79,13 @@ func main() {
 		done.Done()
 	}()
 
-	e := elf{"Tingle", tm.pipeDelivery}
-	go e.handleGift()
+	e1 := elf{"Tingle", claus.pipeElfDelivery}
+	e2 := elf{"Bob", claus.pipeElfDelivery}
+	e3 := elf{"Anna", claus.pipeElfDelivery}
+	go e1.handleGift()
+	go e2.handleGift()
+	go e3.handleGift()
 
 	done.Wait()
+	time.Sleep(2000 * time.Millisecond)
 }
