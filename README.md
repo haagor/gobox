@@ -84,6 +84,15 @@ $ go run main.go
 
 Pour le usecase n°2 je n'ai pas vraiment cette notion d'elf disponible mais plutôt de chan à 1 élément sur lequel écoute tous les elfs. Ainsi Mrs Claus les distribuent un par un et si aucun elf est disponible il va attendre.
 
+### [Peak](https://github.com/haagor/gobox/tree/main/katas/christmasdelivery#readme)
+![](https://github.com/haagor/gobox/blob/main/img/peak.png)
+
+Dans ce kata il est question d’un simple algorithme pour trouver le nombre max d’interval qui se touchent. J’ai rencontré cette problématique pour calculer le nombre max de connexion simultanée et le code déjà écrit que j’ai lu m’a fait mal à la tête. Je me suis dit que j’allais écrire quelque chose de plus simple et efficace. J’ai donc écrit une version. Bon pas forcement plus simple mais plus efficace. Puis je suis allé chercher ce que je pouvais trouver sur internet.
+L’algo que j’ai trouvé sur internet est assez intéressant. J’aurai pu y penser pour des intervalles composés de nombres, mais cela ne m’est pas venu à l’esprit pour mon cas composé de date. Il est question d’écrire une nouvelle liste de doublé; la valeur de début d'intervalle avec la lettre `x`. La valeur de fin d’un intervalle avec la lettre `y`. On tri cette liste. Puis on la parcourt, quand il y à `x` on ajoute 1 à notre résultat, quand il y à un `y` on soustrait 1 à notre résultat.
+Efficace je trouve.
+
+
+
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
 
