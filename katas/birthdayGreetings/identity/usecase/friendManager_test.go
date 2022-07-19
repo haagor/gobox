@@ -33,5 +33,5 @@ func TestGetFriendsBornAt(t *testing.T) {
     r = GetFriendsBornAt(mockDBAdapter, "1993-10-24")
     var e [][3]string
     e = append(e, [3]string{"j.p@wanadoo.fr", "Julien", "Paris"})
-    assert.Equal(t, r, e)
+    assert.Equal(t, e, r)
 }
