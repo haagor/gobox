@@ -1,7 +1,8 @@
 package main
 
 import (
-    "fmt"
+    "os"
+    "strings"
 )
 
 func check(e error) {
@@ -11,5 +12,21 @@ func check(e error) {
 }
 
 func main() {
-    fmt.Println("hello")
+    initWorld(8, 16)
+}
+
+func initWorld(x, y int) {
+    f, err := os.Create("current_gen.txt")
+    check(err)
+    defer f.Close()
+    line := strings.Repeat(".", y) + "\n"
+    starter := "***" + strings.Repeat(".", y-3) + "\n"
+
+    _, err = f.WriteString(starter)
+    check(err)
+
+    for i := 1; i < x; i++ {
+        _, err = f.WriteString(line)
+        check(err)
+    }
 }
