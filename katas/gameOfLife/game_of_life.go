@@ -4,6 +4,7 @@ import (
     "bufio"
     "fmt"
     "log"
+    "math/rand"
     "os"
     "strings"
 )
@@ -15,8 +16,11 @@ func check(e error) {
 }
 
 func main() {
-    initWorld(8, 16)
-    nextGen("current_gen.txt")
+    initWorldRandom(8, 16)
+    for i := 1; i < 3; i++ {
+        nextGen("current_gen.txt")
+        fmt.Println("---")
+    }
 }
 
 func initWorld(x, y int) {
@@ -35,6 +39,27 @@ func initWorld(x, y int) {
     }
 }
 
+func initWorldRandom(x, y int) {
+    f, err := os.Create("current_gen.txt")
+    check(err)
+    defer f.Close()
+
+    for i := 0; i < x; i++ {
+        line := ""
+        for j := 0; j < y; j++ {
+            if rand.Intn(2) == 0 {
+                line += "."
+            } else {
+                line += "*"
+            }
+        }
+        line += "\n"
+
+        _, err = f.WriteString(line)
+        check(err)
+    }
+}
+
 func nextGen(file string) {
     nextGen := ""
 
@@ -45,6 +70,13 @@ func nextGen(file string) {
         }
         nextGen += "\n"
     }
+
+    f, err := os.OpenFile("current_gen.txt", os.O_RDWR, 0644)
+    check(err)
+    defer f.Close()
+    _, err = f.WriteString(nextGen)
+    check(err)
+
     fmt.Println(nextGen)
 }
 
