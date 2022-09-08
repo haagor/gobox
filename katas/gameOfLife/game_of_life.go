@@ -7,6 +7,12 @@ import (
     "math/rand"
     "os"
     "strings"
+    "time"
+
+    "github.com/faiface/pixel"
+    "github.com/faiface/pixel/imdraw"
+    "github.com/faiface/pixel/pixelgl"
+    "golang.org/x/image/colornames"
 )
 
 func check(e error) {
@@ -21,6 +27,43 @@ func main() {
         nextGen("current_gen.txt")
         fmt.Println("---")
     }
+
+    pixelgl.Run(run)
+}
+
+func run() {
+    cfg := pixelgl.WindowConfig{
+        Title:  "GameOfLife",
+        Bounds: pixel.R(0, 0, 800, 800),
+        VSync:  true,
+    }
+    win, err := pixelgl.NewWindow(cfg)
+    if err != nil {
+        panic(err)
+    }
+
+    win.Clear(colornames.Aliceblue)
+
+    imd := imdraw.New(nil)
+    imd.Color = colornames.Black
+    drawR(imd)
+
+    for !win.Closed() {
+        imd.Clear()
+        win.Clear(colornames.Aliceblue)
+        drawR(imd)
+        imd.Draw(win)
+        win.Update()
+        time.Sleep(2 * time.Second)
+    }
+}
+
+func drawR(imd *imdraw.IMDraw) {
+    imd.EndShape = imdraw.RoundEndShape
+    x := float64(rand.Intn(800))
+    y := float64(rand.Intn(800))
+    imd.Push(pixel.V(x, y), pixel.V(x, y))
+    imd.Rectangle(10)
 }
 
 func initWorld(x, y int) {
