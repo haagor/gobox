@@ -2,7 +2,6 @@ package main
 
 import (
     "bufio"
-    "fmt"
     "log"
     "math/rand"
     "os"
@@ -15,6 +14,8 @@ import (
     "golang.org/x/image/colornames"
 )
 
+var sizeCoord = 80
+
 func check(e error) {
     if e != nil {
         panic(e)
@@ -22,19 +23,16 @@ func check(e error) {
 }
 
 func main() {
-    initWorldRandom(8, 16)
-    for i := 1; i < 3; i++ {
-        nextGen("current_gen.txt")
-        fmt.Println("---")
-    }
-
     pixelgl.Run(run)
 }
 
 func run() {
+    initWorldRandom(sizeCoord, sizeCoord)
+
+    sizeGrid := float64(sizeCoord * 10)
     cfg := pixelgl.WindowConfig{
         Title:  "GameOfLife",
-        Bounds: pixel.R(0, 0, 800, 800),
+        Bounds: pixel.R(0, 0, sizeGrid, sizeGrid),
         VSync:  true,
     }
     win, err := pixelgl.NewWindow(cfg)
@@ -46,53 +44,50 @@ func run() {
 
     imd := imdraw.New(nil)
     imd.Color = colornames.Black
-    drawR(imd)
 
     for !win.Closed() {
         imd.Clear()
         win.Clear(colornames.Aliceblue)
-        drawGrid(imd)
-        drawR(imd)
+        drawGrid(imd, sizeGrid)
+
+        nextGen(imd, "current_gen.txt")
+
         imd.Draw(win)
         win.Update()
-        time.Sleep(2 * time.Second)
+        time.Sleep(1 * time.Second)
     }
 }
 
-func drawR(imd *imdraw.IMDraw) {
+func drawCell(imd *imdraw.IMDraw, x, y float64) {
     imd.EndShape = imdraw.RoundEndShape
-    imd.Push(pixel.V(5, 5), pixel.V(5, 5))
+    imd.Push(pixel.V(x, y), pixel.V(x, y))
     imd.Circle(5, 0)
 }
 
-func drawGrid(imd *imdraw.IMDraw) {
+func drawLife(imd *imdraw.IMDraw, lifes [][]string) {
+    for y, line := range lifes {
+        for x, cell := range line {
+            if cell == "*" {
+                xGrid := float64(x*10 + 5)
+                yGrid := float64(y*10 + 5)
+                drawCell(imd, xGrid, yGrid)
+            }
+        }
+    }
+}
+
+func drawGrid(imd *imdraw.IMDraw, size float64) {
     x := float64(10)
-    for x < 800 {
-        imd.Push(pixel.V(x, 0), pixel.V(x, 800))
+    for x < size {
+        imd.Push(pixel.V(x, 0), pixel.V(x, size))
         imd.Line(1)
         x += 10
     }
     y := float64(10)
-    for y < 800 {
-        imd.Push(pixel.V(0, y), pixel.V(800, y))
+    for y < size {
+        imd.Push(pixel.V(0, y), pixel.V(size, y))
         imd.Line(1)
         y += 10
-    }
-}
-
-func initWorld(x, y int) {
-    f, err := os.Create("current_gen.txt")
-    check(err)
-    defer f.Close()
-    line := strings.Repeat(".", y) + "\n"
-    starter := "***" + strings.Repeat(".", y-3) + "\n"
-
-    _, err = f.WriteString(starter)
-    check(err)
-
-    for i := 1; i < x; i++ {
-        _, err = f.WriteString(line)
-        check(err)
     }
 }
 
@@ -117,10 +112,11 @@ func initWorldRandom(x, y int) {
     }
 }
 
-func nextGen(file string) {
+func nextGen(imd *imdraw.IMDraw, file string) {
     nextGen := ""
 
     world := convertWorldFile(file)
+    drawLife(imd, world)
     for x, line := range world {
         for y, _ := range line {
             nextGen += evalCell(world, x, y)
@@ -134,7 +130,7 @@ func nextGen(file string) {
     _, err = f.WriteString(nextGen)
     check(err)
 
-    fmt.Println(nextGen)
+    //fmt.Println(nextGen)
 }
 
 func convertWorldFile(file string) (res [][]string) {
