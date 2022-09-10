@@ -91,7 +91,12 @@ Dans ce kata il est question d’un simple algorithme pour trouver le nombre max
 L’algo que j’ai trouvé sur internet est assez intéressant. J’aurai pu y penser pour des intervalles composés de nombres, mais cela ne m’est pas venu à l’esprit pour mon cas composé de date. Il est question d’écrire une nouvelle liste de doublé; la valeur de début d'intervalle avec la lettre `x`. La valeur de fin d’un intervalle avec la lettre `y`. On tri cette liste. Puis on la parcourt, quand il y à `x` on ajoute 1 à notre résultat, quand il y à un `y` on soustrait 1 à notre résultat.
 Efficace je trouve.
 
+### [Game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+![](https://github.com/haagor/gobox/blob/main/img/gol.png)
 
+Ici les premiers points à traiter sont les structures de données pour représenter mon monde, et l'outil d'affichage 2D. Une fois ces points eclaircis je pourrais aller plus loin dans les experimentations. J'utilise la lib [pixel](https://github.com/faiface/pixel) pour avoir un quadrillage animé. C'est ma premiere utilisation de cette lib et j'ai envie d'aller beaucoup plus loin dans son utilisation pour avoir des visuels de certains algos.
+Voici la premiere version de mon monde:
+![](https://github.com/haagor/gobox/blob/main/img/golv1.png)
 
 ### Jungle
 ![](https://github.com/haagor/gobox/blob/main/img/jungle.png)
