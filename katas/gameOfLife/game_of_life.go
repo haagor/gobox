@@ -51,6 +51,7 @@ func run() {
     for !win.Closed() {
         imd.Clear()
         win.Clear(colornames.Aliceblue)
+        drawGrid(imd)
         drawR(imd)
         imd.Draw(win)
         win.Update()
@@ -60,10 +61,23 @@ func run() {
 
 func drawR(imd *imdraw.IMDraw) {
     imd.EndShape = imdraw.RoundEndShape
-    x := float64(rand.Intn(800))
-    y := float64(rand.Intn(800))
-    imd.Push(pixel.V(x, y), pixel.V(x, y))
-    imd.Rectangle(10)
+    imd.Push(pixel.V(5, 5), pixel.V(5, 5))
+    imd.Circle(5, 0)
+}
+
+func drawGrid(imd *imdraw.IMDraw) {
+    x := float64(10)
+    for x < 800 {
+        imd.Push(pixel.V(x, 0), pixel.V(x, 800))
+        imd.Line(1)
+        x += 10
+    }
+    y := float64(10)
+    for y < 800 {
+        imd.Push(pixel.V(0, y), pixel.V(800, y))
+        imd.Line(1)
+        y += 10
+    }
 }
 
 func initWorld(x, y int) {
