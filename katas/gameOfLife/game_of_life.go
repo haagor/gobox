@@ -23,6 +23,7 @@ func check(e error) {
 }
 
 func main() {
+    rand.Seed(time.Now().UnixNano())
     pixelgl.Run(run)
 }
 
@@ -96,9 +97,9 @@ func initWorldRandom(x, y int) {
     check(err)
     defer f.Close()
 
-    for i := 0; i < x; i++ {
+    for i := 0; i < y; i++ {
         line := ""
-        for j := 0; j < y; j++ {
+        for j := 0; j < x; j++ {
             if rand.Intn(2) == 0 {
                 line += "."
             } else {
@@ -117,8 +118,8 @@ func nextGen(imd *imdraw.IMDraw, file string) {
 
     world := convertWorldFile(file)
     drawLife(imd, world)
-    for x, line := range world {
-        for y, _ := range line {
+    for y, line := range world {
+        for x, _ := range line {
             nextGen += evalCell(world, x, y)
         }
         nextGen += "\n"
@@ -161,47 +162,47 @@ func evalCell(w [][]string, x int, y int) string {
     liveCell := 0
 
     if x > 0 && y > 0 {
-        if w[x-1][y-1] == "*" {
-            liveCell++
-        }
-    }
-    if x > 0 {
-        if w[x-1][y] == "*" {
-            liveCell++
-        }
-    }
-    if x > 0 && y < len(w[0])-2 {
-        if w[x-1][y+1] == "*" {
+        if w[y-1][x-1] == "*" {
             liveCell++
         }
     }
     if y > 0 {
-        if w[x][y-1] == "*" {
+        if w[y-1][x] == "*" {
+            liveCell++
+        }
+    }
+    if y > 0 && x < len(w[0])-2 {
+        if w[y-1][x+1] == "*" {
+            liveCell++
+        }
+    }
+    if x > 0 {
+        if w[y][x-1] == "*" {
+            liveCell++
+        }
+    }
+    if x < len(w[0])-2 {
+        if w[y][x+1] == "*" {
+            liveCell++
+        }
+    }
+    if y < len(w[0])-2 && x > 0 {
+        if w[y+1][x-1] == "*" {
             liveCell++
         }
     }
     if y < len(w[0])-2 {
-        if w[x][y+1] == "*" {
+        if w[y+1][x] == "*" {
             liveCell++
         }
     }
-    if x < len(w[0][0])-2 && y > 0 {
-        if w[x+1][y-1] == "*" {
-            liveCell++
-        }
-    }
-    if x < len(w[0][0])-2 {
-        if w[x+1][y] == "*" {
-            liveCell++
-        }
-    }
-    if x < len(w[0][0])-2 && y < len(w[0])-2 {
-        if w[x+1][y+1] == "*" {
+    if (y < len(w[0])-2) && (x < len(w[0])-2) {
+        if w[y+1][x+1] == "*" {
             liveCell++
         }
     }
 
-    if w[x][y] == "." {
+    if w[y][x] == "." {
         if liveCell == 3 {
             return "*"
         } else {
